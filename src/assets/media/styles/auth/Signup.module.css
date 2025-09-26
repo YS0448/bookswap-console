@@ -1,0 +1,52 @@
+/* Container wrapper for vertical centering */
+.signupWrapper {
+  height: 100vh; 
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Signup form card */
+.signupForm {
+  width: 100%;
+  max-width: 400px; /* Limit width */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 2rem;
+}
+
+/* Login link at bottom */
+.loginLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.loginLink:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Optional: style for the “Sign Up” button (can override Bootstrap) */
+.signupForm .btn-primary {
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+}
+
+/* Optional: Input group icons */
+.input-group-text {
+  background-color: #ffffff;
+  border-left: 0;
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+/* Make input and icon look seamless */
+.input-group .form-control {
+  border-right: 0; /* Remove double border with icon */
+}

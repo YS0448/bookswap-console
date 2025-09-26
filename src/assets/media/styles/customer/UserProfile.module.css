@@ -1,0 +1,64 @@
+/* UserProfile.module.css */
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #fdf6f0;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 40px 20px 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.avatarWrapper {
+  margin-top: -70px; /* pull avatar up */
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  background-color: #eee;
+}
+
+.info {
+  margin-top: 20px;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px 0 5px;
+}
+
+.email {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.role {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #888;
+  background-color: #f0f0f0;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: capitalize;
+}
+
+.last_login_at{
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 10px;
+}

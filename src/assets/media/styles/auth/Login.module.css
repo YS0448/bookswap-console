@@ -1,0 +1,44 @@
+.loginWrapper {
+  height: 80vh;
+  background-color: #f8f9fa;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.orText {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.signupLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.signupLink:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Optional: style input group icon */
+.input-group-text {
+  background-color: #ffffff;
+  border-left: 0;
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+/* Make input + icon seamless */
+.input-group .form-control {
+  border-right: 0;
+}

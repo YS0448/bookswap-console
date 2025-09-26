@@ -1,0 +1,113 @@
+/* Wrapper */
+.addBooksWrapper {
+  min-height: 80vh;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Form */
+.addBooksForm {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.addBooksForm h2 {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.addBooksForm .form-label {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.addBooksForm .form-control,
+.addBooksForm .form-select {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addBooksForm .form-control:focus,
+.addBooksForm .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Buttons */
+.addBooksForm .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.addBooksForm .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.addBooksForm .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  font-weight: 500;
+}
+
+.addBooksForm .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Book Image */
+.bookImage {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bookImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Image buttons container */
+.addBooksForm .imageButtons {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Toast spacing (if needed) */
+.Toastify__toast {
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .addBooksForm {
+    padding: 1.5rem;
+  }
+
+  .bookImage {
+    width: 120px;
+    height: 160px;
+  }
+}

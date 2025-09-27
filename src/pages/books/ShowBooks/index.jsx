@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,  } from "react";
 import apiCall from "../../../api/apiCall";
 import HeroSection from "./HeroSection";
 import BookCard from "./BookCard";
@@ -7,9 +7,11 @@ import BookImageModal from "./BookImageModal";
 import { useAuth } from "../../../context/AuthContext";
 import { showToast, Toast } from "../../../components/AlertService";
 import Loader from "../../../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 const ShowAllBooks = () => {
-  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { user, role } = useAuth();
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const [books, setBooks] = useState([]);
@@ -49,6 +51,11 @@ const ShowAllBooks = () => {
   };
 
   const handleRequest = async (book) => {
+    if(role==='guest') {
+      navigate('/login');
+      return;
+    }
+
     try {
       const payload = { book_id: book.book_id, user_id: user.user_id };
       await apiCall("POST", "api/create_request", payload);

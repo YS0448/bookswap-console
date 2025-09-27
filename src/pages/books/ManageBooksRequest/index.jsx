@@ -110,7 +110,7 @@ const ManageBooksRequest = () => {
             ) : (
               <tr>
                 <td colSpan="6" className="text-center">
-                  No requests found.
+                  No Data found.
                 </td>
               </tr>
             )}

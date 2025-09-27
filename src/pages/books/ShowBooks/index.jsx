@@ -53,10 +53,13 @@ const ShowAllBooks = () => {
 
   const handleRequest = async (book) => {
     if(role==='guest') {
+      setLoading(false)
       navigate('/login');
       return;
     }
-
+    
+    setLoading(true)
+    
     try {
       const payload = { book_id: book.book_id, user_id: user.user_id };
       await apiCall("POST", "api/create_request", payload);
@@ -64,7 +67,9 @@ const ShowAllBooks = () => {
       
     } catch (err) {
       console.error("Error sending request:", err);
-      showToast("error", "Something went wrong while sending the request.");
+      showToast("error", err.message || "Something went wrong while sending the request.");
+    } finally{
+      setLoading(false)
     }
   };
 

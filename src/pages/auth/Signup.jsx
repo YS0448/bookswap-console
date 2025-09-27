@@ -4,6 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../assets/media/styles/auth/Signup.module.css";
 import { Toast, showToast } from "../../components/AlertService";
 import apiCall from "../../api/apiCall";
+import Loader from "../../components/Loader";
 
 const initialFormData = {
   fullName: "",
@@ -21,6 +22,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const [signupData, setSignupData] = useState(initialFormData);
   const [show, setShow] = useState(initialShow);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -60,6 +62,7 @@ const Signup = () => {
   };
 
   const handleSignup = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -67,20 +70,23 @@ const Signup = () => {
     try {
       const response = await apiCall("POST", "/auth/signup", signupData);
       console.log("response:", response);
+      
       showToast("success", "Signup successful! Please login.");
-
       setTimeout(() => {
         navigate("/login");
-      }, 1000);
+      }, 1200);
 
     } catch (err) {
       console.log(err);
       showToast("error", err.message || "Signup failed! Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {loading && <Loader/>}
       <Toast />
       <div className={`d-flex justify-content-center align-items-center ${styles.signupWrapper}`}>
         <form className={`p-4 shadow ${styles.signupForm}`} onSubmit={handleSignup}>

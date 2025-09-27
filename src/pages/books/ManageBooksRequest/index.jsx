@@ -37,7 +37,9 @@ const ManageBooksRequest = () => {
 
   const handleAction = async (request_id, book_id, request_status) => {
     try {
-      await apiCall("POST", "/api/manage-requests/update", {
+        setLoading(true);
+        // Update request status
+      const response= await apiCall("POST", "/api/manage-requests/update", {
         request_id,
         book_id,
         request_status
@@ -46,6 +48,8 @@ const ManageBooksRequest = () => {
       fetchRequests(currentPage);
     } catch (err) {
       console.error("Error updating request:", err);
+    } finally {
+        setLoading(false);
     }
   };
 

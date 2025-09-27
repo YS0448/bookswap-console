@@ -4,6 +4,7 @@ import { showToast, Toast } from "../../../components/AlertService";
 import apiCall from "../../../api/apiCall";
 import ImageUploader from "./ImageUploader";
 import BookFormFields from "./BookFormFields";
+import Loader from "../../../components/Loader";
 
 const initialFormData = {
   title: "",
@@ -13,6 +14,7 @@ const initialFormData = {
 };
 
 const AddBooks = () => {
+  const [loading, setLoading] = useState(false);
   const [bookData, setBookData] = useState(initialFormData);
   const [preview, setPreview] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -23,6 +25,7 @@ const AddBooks = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     if (!bookData.title || !bookData.author || !bookData.condition) {
@@ -50,10 +53,14 @@ const AddBooks = () => {
       console.error(err);
       showToast("error", err.message || "Failed to add book");
     }
+    finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
+      {loading && <Loader />}
       <Toast />
       <div className={`d-flex justify-content-center align-items-center ${styles.addBooksWrapper}`}>
         <form className={`p-4 shadow ${styles.addBooksForm}`} onSubmit={handleSubmit}>

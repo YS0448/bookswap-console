@@ -6,6 +6,7 @@ import apiCall from "../../api/apiCall";
 import { showToast, Toast } from "../../components/AlertService";
 import {useAuth} from "../../context/AuthContext";
 import { me } from "../../api/authApi";
+import Loader from "../../components/Loader";
 // Initial form state
 const initialFormData = {
   userId: "",
@@ -22,6 +23,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState(initialFormData);
   const [show, setShow] = useState(initialShow);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -45,6 +47,7 @@ const Login = () => {
   };
 
   const handleLogin = async (e) => {
+    setLoading(true);    
     e.preventDefault();
 
     // Form Validate 
@@ -68,7 +71,7 @@ const Login = () => {
         setUser(currentUser);
         setRole(currentUser.role);
       }
-
+    
     // Redirect after login 
       setTimeout(() => {
         navigate("/"); 
@@ -77,11 +80,14 @@ const Login = () => {
     } catch (err) {
       console.error("Error:", err);
       showToast("error", err.message || "Login failed! Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+     {loading && <Loader/>}
       <Toast />
       <div className={`d-flex justify-content-center align-items-center ${styles.loginWrapper}`}>
         <form className={`p-4 shadow ${styles.loginForm}`} onSubmit={handleLogin}>

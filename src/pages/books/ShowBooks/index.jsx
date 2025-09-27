@@ -13,6 +13,7 @@ const ShowAllBooks = () => {
   const navigate = useNavigate();
   const { user, role } = useAuth();
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  console.log('baseUrl:', baseUrl);
 
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);

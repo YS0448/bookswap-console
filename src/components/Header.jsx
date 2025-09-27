@@ -103,6 +103,17 @@ function Header() {
                     </NavLink>
                   </li>
 
+                  <li className="nav-item">
+                    <NavLink
+                      to="/orders"
+                      className={({ isActive }) =>
+                        `nav-link ${isActive ? styles.active : ""}`
+                      }
+                    >
+                      My Orders
+                    </NavLink>
+                  </li>
+
                   {/* User Dropdown */}
                   <li className="nav-item dropdown ms-2">
                     <span

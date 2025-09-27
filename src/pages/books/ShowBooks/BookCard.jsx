@@ -26,7 +26,7 @@ const BookCard = ({ book, baseUrl, openModal, handleRequest }) => {
         </div>
         <div className="card-footer text-center border-0 bg-white">
           
-          {book.request_status === null ? (
+          {/* {book.request_status === null ? (
             <button
               className="btn btn-primary btn-sm w-100"
               onClick={() => handleRequest(book)}
@@ -45,7 +45,28 @@ const BookCard = ({ book, baseUrl, openModal, handleRequest }) => {
             <button className="btn btn-danger btn-sm w-100" disabled>
               Declined
             </button>
-          ) : null}
+          ) : null} */}
+          
+          {/* {book.request_status === "pending" ? (
+            <button className="btn btn-warning btn-sm w-100" disabled>
+              Pending
+            </button>
+          ) :  (            
+            <button
+              className="btn btn-primary btn-sm w-100"
+              onClick={() => handleRequest(book)}
+            >
+              Request to Borrow
+            </button>
+          ) 
+          } */}
+
+          <button
+              className="btn btn-primary btn-sm w-100"
+              onClick={() => handleRequest(book)}
+            >
+              Request to Borrow
+            </button>
 
         </div>
       </div>

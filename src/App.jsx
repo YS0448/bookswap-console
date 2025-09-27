@@ -17,7 +17,13 @@ import ShowAllBooks from './pages/books/ShowBooks/index.jsx';
 import MyBooks from './pages/books/UserBooks/index.jsx';
 import ManageBooksRequest from './pages/books/ManageBooksRequest/index.jsx';
 import UserProfile from './pages/customer/UserProfile.jsx';
- 
+
+
+// Orders
+import Orders from './pages/orders/index.jsx';
+
+
+
 // Page Not Found
 import NotFound from './pages/common/NotFound.jsx';
 
@@ -34,6 +40,7 @@ function AppLayout() {
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/user-books" element={<MyBooks />} />
         <Route path="/manage-books-request" element={<ManageBooksRequest />} />
+        <Route path="/orders" element={<Orders />} />
       </Route>
     </Routes>
   )

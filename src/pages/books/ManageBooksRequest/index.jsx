@@ -12,7 +12,7 @@ const ManageBooksRequest = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const itemsPerPage = 2; // your LIMIT
+  const itemsPerPage = 5; // your LIMIT
 
   // Fetch paginated data
   const fetchRequests = async (page = 0) => {
@@ -35,11 +35,12 @@ const ManageBooksRequest = () => {
     }
   };
 
-  const handleAction = async (request_id, status) => {
+  const handleAction = async (request_id, book_id, request_status) => {
     try {
       await apiCall("POST", "/api/manage-requests/update", {
         request_id,
-        status,
+        book_id,
+        request_status
       });
       // Refresh the list after action
       fetchRequests(currentPage);
@@ -63,8 +64,8 @@ const ManageBooksRequest = () => {
         <table className="table table-bordered table-striped">
           <thead className="table-dark">
             <tr>
-              <th>Book Title</th>
               <th>Requester ID</th>
+              <th>Book Title</th>
               <th>Requester</th>
               <th>Status</th>
               <th>Requested At</th>
@@ -75,8 +76,8 @@ const ManageBooksRequest = () => {
             {requests.length ? (
               requests.map((req) => (
                 <tr key={req.request_id}>
-                  <td>{req.book_title}</td>
                   <td>{req.requester_id}</td>
+                  <td>{req.book_title}</td>
                   <td>{req.requester_name}</td>
                   <td>
                     <span
@@ -97,7 +98,7 @@ const ManageBooksRequest = () => {
                       className="form-select form-select-sm"
                       value={req.request_status}
                       onChange={(e) =>
-                        handleAction(req.request_id, e.target.value)
+                        handleAction(req.request_id, req.book_id, e.target.value)
                       }
                     >
                       <option value="pending">⏳ Pending</option>

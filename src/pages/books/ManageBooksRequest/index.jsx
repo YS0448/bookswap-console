@@ -42,7 +42,7 @@ const ManageBooksRequest = () => {
         status,
       });
       // Refresh the list after action
-      fetchRequests(currentPage); 
+      fetchRequests(currentPage);
     } catch (err) {
       console.error("Error updating request:", err);
     }
@@ -72,40 +72,48 @@ const ManageBooksRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {requests.map((req) => (
-              <tr key={req.request_id}>
-                <td>{req.book_title}</td>
-                <td>{req.requester_id}</td>
-                <td>{req.requester_name}</td>
-                <td>
-                  <span
-                    className={`badge ${
-                      req.request_status === "accepted"
-                        ? "bg-success"
-                        : req.request_status === "declined"
-                        ? "bg-danger"
-                        : "bg-warning text-dark"
-                    }`}
-                  >
-                    {req.request_status.toUpperCase()}
-                  </span>
-                </td>
-                <td>{formatDate(req.created_at)}</td>
-                <td>
-                  <select
-                    className="form-select form-select-sm"
-                    value={req.request_status}
-                    onChange={(e) =>
-                      handleAction(req.request_id, e.target.value)
-                    }
-                  >
-                    <option value="pending">⏳ Pending</option>
-                    <option value="accepted">✅ Accepted</option>
-                    <option value="declined">❌ Declined</option>
-                  </select>
+            {requests ? (
+              requests.map((req) => (
+                <tr key={req.request_id}>
+                  <td>{req.book_title}</td>
+                  <td>{req.requester_id}</td>
+                  <td>{req.requester_name}</td>
+                  <td>
+                    <span
+                      className={`badge ${
+                        req.request_status === "accepted"
+                          ? "bg-success"
+                          : req.request_status === "declined"
+                          ? "bg-danger"
+                          : "bg-warning text-dark"
+                      }`}
+                    >
+                      {req.request_status.toUpperCase()}
+                    </span>
+                  </td>
+                  <td>{formatDate(req.created_at)}</td>
+                  <td>
+                    <select
+                      className="form-select form-select-sm"
+                      value={req.request_status}
+                      onChange={(e) =>
+                        handleAction(req.request_id, e.target.value)
+                      }
+                    >
+                      <option value="pending">⏳ Pending</option>
+                      <option value="accepted">✅ Accepted</option>
+                      <option value="declined">❌ Declined</option>
+                    </select>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="text-center">
+                  No requests found.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

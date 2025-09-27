@@ -72,7 +72,7 @@ const ManageBooksRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {requests ? (
+            {requests.length ? (
               requests.map((req) => (
                 <tr key={req.request_id}>
                   <td>{req.book_title}</td>

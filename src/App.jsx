@@ -17,11 +17,14 @@ import ShowAllBooks from './pages/books/ShowBooks/index.jsx';
 import MyBooks from './pages/books/UserBooks/index.jsx';
 import ManageBooksRequest from './pages/books/ManageBooksRequest/index.jsx';
 import UserProfile from './pages/customer/UserProfile.jsx';
-
+ 
+// Page Not Found
+import NotFound from './pages/common/NotFound.jsx';
 
 function AppLayout() {
   return(
     <Routes>
+      <Route path="*" element= {<NotFound />}> </Route>
       <Route element={<MainLayout />} >
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

@@ -1,0 +1,40 @@
+.notFoundWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  color: #333;
+}
+
+.errorCode {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ff4d4f;
+}
+
+.errorText {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.errorMessage {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.homeLink {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.homeLink:hover {
+  background-color: #0056b3;
+}

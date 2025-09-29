@@ -97,7 +97,7 @@ function Header() {
                       </li>
                       <li>
                         <NavLink
-                          to="/user-books"
+                          to="/manage-books"
                           className={({ isActive }) =>
                             `dropdown-item ${isActive ? styles.active : ""}`
                           }

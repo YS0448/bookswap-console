@@ -14,7 +14,7 @@ import Signup from './pages/auth/Signup';
 // Books
 import AddBook from './pages/books/AddBook/index.jsx';
 import ShowAllBooks from './pages/books/ShowBooks/index.jsx';
-import MyBooks from './pages/books/UserBooks/index.jsx';
+import ManageBooks from './pages/books/ManageBooks/index.jsx';
 import ManageBooksRequest from './pages/books/ManageBooksRequest/index.jsx';
 import UserProfile from './pages/customer/UserProfile.jsx';
 
@@ -38,7 +38,7 @@ function AppLayout() {
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/show-all-books" element={<ShowAllBooks />} />
         <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/user-books" element={<MyBooks />} />
+        <Route path="/manage-books" element={<ManageBooks />} />
         <Route path="/manage-books-request" element={<ManageBooksRequest />} />
         <Route path="/orders" element={<Orders />} />
       </Route>

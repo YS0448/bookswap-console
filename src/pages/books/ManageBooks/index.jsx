@@ -7,7 +7,7 @@ import styles from "../../../assets/media/styles/books/UserBooks.module.css";
 import { Toast, showToast } from "../../../components/AlertService";
 import BookRow from "./BookRow";
 
-const UserBooks = () => {
+const ManageBooks = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const { user } = useAuth();
   const [books, setBooks] = useState([]);
@@ -103,4 +103,4 @@ const UserBooks = () => {
   );
 };
 
-export default UserBooks;
+export default ManageBooks;

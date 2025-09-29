@@ -104,6 +104,7 @@ const ManageBooksRequest = () => {
                       onChange={(e) =>
                         handleAction(req.request_id, req.book_id, e.target.value)
                       }
+                      disabled={["accepted","declined"].includes(req.request_status)}
                     >
                       <option value="pending">⏳ Pending</option>
                       <option value="accepted">✅ Accepted</option>

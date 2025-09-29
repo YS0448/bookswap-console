@@ -63,12 +63,15 @@ const ShowAllBooks = () => {
     try {
       const payload = { book_id: book.book_id, user_id: user.user_id };
       await apiCall("POST", "api/create_request", payload);
-      showToast("success", "Request sent successfully!");
+      setTimeout(()=>{
+        showToast("success", "Request sent successfully!");
+      },1)
       
     } catch (err) {
       console.error("Error sending request:", err);
       showToast("error", err.message || "Something went wrong while sending the request.");
-    } finally{
+    } 
+    finally{
       setLoading(false)
     }
   };

@@ -11,8 +11,7 @@ function Header() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogout = () => {
-    // Clear user session
-    localStorage.clear();
+    localStorage.removeItem("user-cred")
     setShowLogoutModal(false);
     setUser(null);
     setRole("guest");
@@ -46,6 +45,7 @@ function Header() {
           {/* Navbar links */}
           <div className="collapse navbar-collapse" id="headerNav">
             <ul className="navbar-nav ms-auto align-items-center">
+              {/* Home */}
               <li className="nav-item">
                 <NavLink
                   to="/"
@@ -57,52 +57,73 @@ function Header() {
                 </NavLink>
               </li>
 
-              <li className="nav-item">
-                <NavLink
-                  to="/show-all-books"
-                  className={({ isActive }) =>
-                    `nav-link ${isActive ? styles.active : ""}`
-                  }
+              {/* Books Dropdown */}
+              <li className="nav-item dropdown">
+                <span
+                  className="nav-link dropdown-toggle"
+                  id="booksDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ cursor: "pointer" }}
                 >
                   Books
-                </NavLink>
+                </span>
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="booksDropdown"
+                >
+                  <li>
+                    <NavLink
+                      to="/show-all-books"
+                      className={({ isActive }) =>
+                        `dropdown-item ${isActive ? styles.active : ""}`
+                      }
+                    >
+                      Show All Books
+                    </NavLink>
+                  </li>
+                  {role === "customer" && (
+                    <>
+                      <li>
+                        <NavLink
+                          to="/add-book"
+                          className={({ isActive }) =>
+                            `dropdown-item ${isActive ? styles.active : ""}`
+                          }
+                        >
+                          Add Book
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/user-books"
+                          className={({ isActive }) =>
+                            `dropdown-item ${isActive ? styles.active : ""}`
+                          }
+                        >
+                          Manage Books
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/manage-books-request"
+                          className={({ isActive }) =>
+                            `dropdown-item ${isActive ? styles.active : ""}`
+                          }
+                        >
+                          Manage Books Request
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+                </ul>
               </li>
 
+              {/* User Dropdown */}
               {role === "customer" && (
                 <>
-                  <li className="nav-item">
-                    <NavLink
-                      to="/add-book"
-                      className={({ isActive }) =>
-                        `nav-link ${isActive ? styles.active : ""}`
-                      }
-                    >
-                      Add Book
-                    </NavLink>
-                  </li>
-
-                  <li className="nav-item">
-                    <NavLink
-                      to="/user-books"
-                      className={({ isActive }) =>
-                        `nav-link ${isActive ? styles.active : ""}`
-                      }
-                    >
-                      Manage Books
-                    </NavLink>
-                  </li>
-
-                  <li className="nav-item">
-                    <NavLink
-                      to="/manage-books-request"
-                      className={({ isActive }) =>
-                        `nav-link ${isActive ? styles.active : ""}`
-                      }
-                    >
-                      Manage Books Request
-                    </NavLink>
-                  </li>
-
+                  {/* Order */}
                   <li className="nav-item">
                     <NavLink
                       to="/orders"
@@ -114,7 +135,6 @@ function Header() {
                     </NavLink>
                   </li>
 
-                  {/* User Dropdown */}
                   <li className="nav-item dropdown ms-2">
                     <span
                       className="nav-link dropdown-toggle"
@@ -149,6 +169,7 @@ function Header() {
                 </>
               )}
 
+              {/* Login button */}
               {role === "guest" && (
                 <li className="nav-item ms-2">
                   <Link

@@ -10,7 +10,7 @@
 }
 
 /* Hover effect */
-.nav-link:hover {
+:global(.nav-link:hover) {
   color: #0056b3 !important;
 }
 
@@ -20,7 +20,8 @@
   font-weight: 500;
 }
 
-
-.nav-item.dropdown:hover .dropdown-menu {
-  display: block;
+/* Keep dropdown aligned properly */
+:global(.dropdown-menu) {
+  right: 0;
+  left: auto;
 }

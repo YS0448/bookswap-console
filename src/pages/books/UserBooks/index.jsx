@@ -19,7 +19,7 @@ const UserBooks = () => {
     setLoading(true);
     try {
       const offset = page * limit;
-      const url = `api/getUserBooks?user_id=${user.user_id}&limit=${limit}&offset=${offset}`;
+      const url = `api/users/me/books?user_id=${user.user_id}&limit=${limit}&offset=${offset}`;
       const response = await apiCall("GET", url);
       setBooks(response.data.books || []);
       setTotalBooks(response.data.total || 0);

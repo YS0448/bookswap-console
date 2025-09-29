@@ -21,7 +21,7 @@ const ManageBooksRequest = () => {
 
       const response = await apiCall(
         "GET",
-        `/api/manage-requests?owner_id=${user.user_id}&page=${
+        `/api/book-requests?owner_id=${user.user_id}&page=${
           page + 1
         }&limit=${itemsPerPage}`
       );
@@ -39,8 +39,7 @@ const ManageBooksRequest = () => {
     try {
         setLoading(true);
         // Update request status
-      const response= await apiCall("POST", "/api/manage-requests/update", {
-        request_id,
+      const response= await apiCall("PATCH", `/api/book-requests/${request_id}`, {
         book_id,
         request_status
       });

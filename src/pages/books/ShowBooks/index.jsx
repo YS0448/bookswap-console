@@ -28,7 +28,7 @@ const ShowAllBooks = () => {
     setLoading(true);
     try {
       const offset = page * limit;
-      const url = `api/getAllBooks?user_id=${user?.user_id || null}&limit=${limit}&offset=${offset}`;
+      const url = `api/books?user_id=${user?.user_id || null}&limit=${limit}&offset=${offset}`;
       const response = await apiCall("GET", url);
 
       console.log("Fetched books:", response.data.books);
@@ -62,7 +62,7 @@ const ShowAllBooks = () => {
     
     try {
       const payload = { book_id: book.book_id, user_id: user.user_id };
-      await apiCall("POST", "api/create_request", payload);
+      await apiCall("POST", "api/book-requests", payload);
       setTimeout(()=>{
         showToast("success", "Request sent successfully!");
       },1)

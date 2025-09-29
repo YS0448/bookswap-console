@@ -20,7 +20,7 @@ const Orders = () => {
     setLoading(true);
     try {
       const offset = page * limit;
-      const url = `api/getMyOrders?limit=${limit}&offset=${offset}`;
+      const url = `api/users/me/orders?limit=${limit}&offset=${offset}`;
       const response = await apiCall("GET", url);
       setOrders(response.data.orders || []);
       setTotalOrders(response.data.total || 0);

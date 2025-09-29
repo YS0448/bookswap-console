@@ -78,3 +78,31 @@ h2 {
   color: #fff;
   border-color: #007bff;
 }
+
+
+/* Upload button inside table */
+.uploadButton {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.uploadButton input[type="file"] {
+  display: none;
+}
+
+/* Image preview inside table */
+.imagePreview {
+  margin-top: 5px;
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

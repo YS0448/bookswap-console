@@ -11,6 +11,7 @@ const initialFormData = {
   email: "",
   password: "",
   confirmPassword: "",
+  otp:""
 };
 
 const initialShow = {
@@ -23,14 +24,14 @@ const Signup = () => {
   const [signupData, setSignupData] = useState(initialFormData);
   const [show, setShow] = useState(initialShow);
   const [loading, setLoading] = useState(false);
-
+  const [otpBtn ,setOtpBtn] = useState(false);
   const handleChange = (e) => {
     const { id, value } = e.target;
     setSignupData((prev) => ({ ...prev, [id]: value }));
   };
 
   const validateForm = () => {
-    const { fullName, email, password, confirmPassword } = signupData;
+    const { fullName, email, password, confirmPassword, otp } = signupData;
 
     if (!fullName) {
       showToast("error", "Please enter Full Name");
@@ -58,6 +59,10 @@ const Signup = () => {
       return false;
     }
 
+    if(!otp){
+      showToast("error", "Please enter OTPs");
+      return false;
+    }
     return true;
   };
 
@@ -84,12 +89,33 @@ const Signup = () => {
     }
   };
 
+  const handleSendOtp=async(e)=>{
+    try{
+      e.preventDefault();
+      setLoading(true);
+      let email = signupData.email
+      if(!email){
+        showToast('error', "Please Enter Email ID")
+        return;
+      }
+      const data= { email: email}
+      const response= await apiCall("Post", "/auth/send-otp", data)
+      showToast("success", response.data.message)
+      setOtpBtn(true)
+    }catch(err){
+      console.log("Error", err)
+    }
+    finally{
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       {loading && <Loader/>}
       <Toast />
       <div className={`d-flex justify-content-center align-items-center ${styles.signupWrapper}`}>
-        <form className={`p-4 shadow ${styles.signupForm}`} onSubmit={handleSignup}>
+        <form className={`p-4 shadow ${styles.signupForm}`}>
           <h2 className="mb-4 text-center">Sign Up</h2>
 
           {/* Full Name */}
@@ -102,7 +128,7 @@ const Signup = () => {
               value={signupData.fullName}
               onChange={handleChange}
               placeholder="Enter your Full Name"
-              required
+              
             />
           </div>
 
@@ -116,7 +142,7 @@ const Signup = () => {
               value={signupData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              required
+              
             />
           </div>
 
@@ -131,7 +157,7 @@ const Signup = () => {
                 value={signupData.password}
                 onChange={handleChange}
                 placeholder="Enter password"
-                required
+                
               />
               <span
                 className="input-group-text"
@@ -154,7 +180,7 @@ const Signup = () => {
                 value={signupData.confirmPassword}
                 onChange={handleChange}
                 placeholder="Confirm password"
-                required
+                
               />
               <span
                 className="input-group-text"
@@ -166,7 +192,26 @@ const Signup = () => {
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100 mt-3">Sign Up</button>
+          <div className="mb-3">
+            { otpBtn ? 
+              (
+                <input
+                  type={"text"}
+                  id="otp"
+                  className="form-control mb-1"
+                  value={signupData.otp}
+                  onChange={handleChange}
+                  placeholder="Enter otp"
+                  
+                />              
+              ) : (              
+                <button className="btn btn-success" onClick={handleSendOtp}>Send Otp</button>
+              )
+            }
+
+          </div>
+
+          <button type="submit" className="btn btn-primary w-100 mt-3" onClick={handleSignup}>Sign Up</button>
 
           <div className="text-center mt-3">
             Already have an account? <Link to="/login" className={styles.loginLink}>Login</Link>
